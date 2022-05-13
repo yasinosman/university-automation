@@ -4,9 +4,9 @@ import React from "react";
 import * as Yup from "yup";
 
 const USER_DATA = {
-	firstName: "John",
-	lastName: "Doe",
-	email: "johndoe@gmail.com",
+	firstName: "Yasin",
+	lastName: "Osman",
+	email: "yasinosman10@gmail.com",
 };
 
 const ProfileSchema = Yup.object().shape({
