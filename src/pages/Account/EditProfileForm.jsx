@@ -3,6 +3,12 @@ import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 
+const USER_DATA = {
+	firstName: "John",
+	lastName: "Doe",
+	email: "johndoe@gmail.com",
+};
+
 const ProfileSchema = Yup.object().shape({
 	firstName: Yup.string()
 		.min(2, "İsim en az 2 karakter olmalıdır")
@@ -17,16 +23,20 @@ const ProfileSchema = Yup.object().shape({
 
 const EditProfileForm = () => {
 	const formik = useFormik({
-		initialValues: {
-			firstName: "",
-			lastName: "",
-			email: "",
-		},
+		initialValues: USER_DATA,
 		validationSchema: ProfileSchema,
 		onSubmit: (values) => {
 			alert(JSON.stringify(values, null, 2));
 		},
 	});
+
+	const areAllFieldsUnchanged = React.useMemo(() => {
+		return (
+			USER_DATA.firstName === formik.values.firstName &&
+			USER_DATA.lastName === formik.values.lastName &&
+			USER_DATA.email === formik.values.email
+		);
+	}, [formik.values]);
 
 	return (
 		<form onSubmit={formik.handleSubmit}>
@@ -75,7 +85,7 @@ const EditProfileForm = () => {
 					error={formik.touched.email && Boolean(formik.errors.email)}
 					helperText={formik.touched.email && formik.errors.email}
 				/>
-				<Button color="primary" variant="contained" type="submit">
+				<Button color="primary" variant="contained" type="submit" disabled={areAllFieldsUnchanged}>
 					Bilgileri Güncelle
 				</Button>
 			</Box>
