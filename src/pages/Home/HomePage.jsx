@@ -9,7 +9,7 @@ const HomePage = () => {
 				<p>You can do this, I believe in you.</p>
 			</main>
 			<nav>
-				<Link to="/about">About</Link>
+				<Link to="/Calendar">About</Link>
 			</nav>
 		</>
 	);
