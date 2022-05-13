@@ -10,7 +10,9 @@ const AccountPage = () => {
 		<>
 			<Navbar />
 
-			<PageTitle title="Hesap" />
+			<Container maxWidth="xl">
+				<PageTitle title="Hesap" />
+			</Container>
 
 			<Container maxWidth="xl">
 				<Grid container spacing={5}>
