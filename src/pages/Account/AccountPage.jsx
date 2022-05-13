@@ -2,9 +2,9 @@ import { Box, Button, Container, Grid, TextField, Typography } from "@mui/materi
 import React from "react";
 import Navbar from "../../components/Navbar";
 import PageTitle from "../../components/PageTitle";
+import EditProfileForm from "./EditProfileForm";
 
 const AccountPage = () => {
-	const [firstName, setFirstName] = React.useState("Yasin");
 	return (
 		<>
 			<Navbar />
@@ -14,44 +14,7 @@ const AccountPage = () => {
 			<Container maxWidth="xl">
 				<Grid container spacing={5}>
 					<Grid item xs={12} md={6}>
-						<Box
-							component="form"
-							sx={{
-								display: "flex",
-								flexDirection: "column",
-								justifyContent: "space-between",
-								"& .MuiTextField-root": { marginBottom: 2 },
-							}}
-							noValidate
-							autoComplete="off"
-						>
-							<Typography variant="overline" display="block" gutterBottom>
-								Profil Güncelleme
-							</Typography>
-							<TextField
-								id="firstname"
-								label="Ad"
-								variant="outlined"
-								value={firstName}
-								onChange={(e) => setFirstName(e.target.value)}
-							/>
-							<TextField
-								id="lastname"
-								label="Soyad"
-								variant="outlined"
-								value={firstName}
-								onChange={(e) => setFirstName(e.target.value)}
-								sx={{ marginBottom: 2 }}
-							/>
-							<TextField
-								id="email"
-								label="E-Posta Adresi"
-								variant="outlined"
-								value={firstName}
-								onChange={(e) => setFirstName(e.target.value)}
-							/>
-							<Button variant="contained">Bilgileri Güncelle</Button>
-						</Box>
+						<EditProfileForm />
 					</Grid>
 					<Grid item xs={12} md={6}>
 						<Box
