@@ -5,6 +5,7 @@ const USER_DATA = {
 	firstName: "Yasin",
 	lastName: "Osman",
 	email: "yasinosman10@gmail.com",
+	imgURL: "https://picsum.photos/100",
 	password: "123123",
 };
 
