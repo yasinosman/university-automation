@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import AlertPopup from "../../../components/AlertPopup";
 import Loading from "../../../components/Loading";
 import { useAuth } from "../../../context/Authentication";
 
@@ -90,16 +91,7 @@ const LoginForm = () => {
 			</Box>
 			<Loading loading={loading} />
 
-			<Snackbar
-				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-				open={error !== null}
-				onClose={() => setError(null)}
-			>
-				<Alert onClose={() => setError(null)} severity="error" sx={{ width: "100%", mb: 2 }}>
-					<AlertTitle>Hata</AlertTitle>
-					{error}
-				</Alert>
-			</Snackbar>
+			<AlertPopup error={error} handleClose={() => setError(null)} />
 		</form>
 	);
 };
