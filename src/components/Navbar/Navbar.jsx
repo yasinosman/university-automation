@@ -14,13 +14,14 @@ import MenuItem from "@mui/material/MenuItem";
 import { BookOnline as BookOnlineIcon } from "@mui/icons-material";
 
 import { useNavigate } from "react-router-dom";
+import SettingsMenu from "./SettingsMenu";
 
 const pages = [
 	{ link: "/", name: "Ana Sayfa" },
 	{ link: "/calendar", name: "Takvim" },
 	{ link: "/courses", name: "Dersler" },
 ];
-const settings = ["Account", "Logout"];
+const settings = [{ link: "/account", name: "Hesap" }];
 
 const Navbar = () => {
 	const navigate = useNavigate();
@@ -45,6 +46,12 @@ const Navbar = () => {
 
 	const handleNavItemClick = (page) => {
 		closeNav();
+
+		navigate(page.link);
+	};
+
+	const handleUserMenuItemClick = (page) => {
+		closeUserMenu();
 
 		navigate(page.link);
 	};
@@ -140,33 +147,17 @@ const Navbar = () => {
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Open settings">
+						<Tooltip title="Ayarlar">
 							<IconButton onClick={openUserMenu} sx={{ p: 0 }}>
 								<Avatar alt="Yasin Osman" src="https://picsum.photos/50" />
 							</IconButton>
 						</Tooltip>
-						<Menu
-							sx={{ mt: "45px" }}
-							id="menu-appbar"
+						<SettingsMenu
 							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: "top",
-								horizontal: "right",
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: "top",
-								horizontal: "right",
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={closeUserMenu}
-						>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={closeUserMenu}>
-									<Typography textAlign="center">{setting}</Typography>
-								</MenuItem>
-							))}
-						</Menu>
+							settings={settings}
+							handleClose={closeUserMenu}
+							onSettingItemClick={handleUserMenuItemClick}
+						/>
 					</Box>
 				</Toolbar>
 			</Container>
