@@ -2,6 +2,9 @@ import { AccountCircle, Logout } from "@mui/icons-material";
 // eslint-disable-next-line no-unused-vars
 import { ListItemIcon, Menu, MenuItem, Typography, MenuProps } from "@mui/material";
 import React from "react";
+import { useAuth } from "../../context/Authentication";
+import AlertPopup from "../AlertPopup/AlertPopup";
+import Loading from "../Loading";
 import UserCard from "../UserCard";
 
 /**
@@ -13,6 +16,23 @@ import UserCard from "../UserCard";
  * @param {(setting: {link: String, name: String}) => void} props.onSettingItemClick
  */
 const SettingsMenu = ({ anchorEl, handleClose, settings, onSettingItemClick }) => {
+	const auth = useAuth();
+
+	const [loading, setLoading] = React.useState(false);
+	const [error, setError] = React.useState(null);
+
+	const handleLogout = async () => {
+		setLoading(true);
+
+		try {
+			await auth.logout();
+		} catch (error) {
+			setError(error);
+		} finally {
+			setLoading(false);
+		}
+	};
+
 	return (
 		<Menu
 			sx={{ mt: "45px" }}
@@ -39,12 +59,15 @@ const SettingsMenu = ({ anchorEl, handleClose, settings, onSettingItemClick }) =
 					<Typography textAlign="center">{page.name}</Typography>
 				</MenuItem>
 			))}
-			<MenuItem onClick={() => alert("Logged out")}>
+			<MenuItem onClick={handleLogout}>
 				<ListItemIcon>
 					<Logout fontSize="small" />
 				</ListItemIcon>
 				<Typography textAlign="center">Çıkış</Typography>
 			</MenuItem>
+
+			<Loading loading={loading} />
+			<AlertPopup error={error} handleClose={() => setError(null)} />
 		</Menu>
 	);
 };
