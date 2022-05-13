@@ -1,8 +1,9 @@
-import { Alert, AlertTitle, Backdrop, Box, Button, CircularProgress, Snackbar, TextField } from "@mui/material";
+import { Alert, AlertTitle, Box, Button, Snackbar, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import Loading from "../../../components/Loading";
 import { useAuth } from "../../../context/Authentication";
 
 const LoginSchema = Yup.object().shape({
@@ -87,9 +88,7 @@ const LoginForm = () => {
 					Giriş Yap
 				</Button>
 			</Box>
-			<Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
-				<CircularProgress color="inherit" />
-			</Backdrop>
+			<Loading loading={loading} />
 
 			<Snackbar
 				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
