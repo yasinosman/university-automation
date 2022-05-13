@@ -1,7 +1,12 @@
 import React from "react";
+import Navbar from "../../components/Navbar";
 
 const AccountPage = () => {
-	return <div>AccountPage</div>;
+	return (
+		<>
+			<Navbar />
+		</>
+	);
 };
 
 export default AccountPage;
