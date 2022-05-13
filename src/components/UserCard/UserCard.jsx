@@ -1,12 +1,15 @@
-import { Avatar, Paper, Typography } from "@mui/material";
 import React from "react";
+import { Avatar, Paper, Typography } from "@mui/material";
+import { useAuth } from "../../context/Authentication";
 
 const UserCard = () => {
+	const { user } = useAuth();
+
 	return (
 		<Paper elevation={0} sx={{ paddingTop: 2, paddingBottom: 2, paddingLeft: 5, paddingRight: 5 }}>
 			<Avatar
-				alt="Yasin Osman"
-				src="https://picsum.photos/100"
+				alt={`${user.firstName} ${user.lastName}`}
+				src={user.imgURL}
 				sx={{
 					marginBottom: 2,
 					marginLeft: "auto",
@@ -16,10 +19,10 @@ const UserCard = () => {
 				}}
 			/>
 			<Typography variant="h6" component="p" align="center">
-				Yasin Osman
+				{user.firstName} {user.lastName}
 			</Typography>
 			<Typography variant="body1" component="p" align="center">
-				yasinosman10@gmail.com
+				{user.email}
 			</Typography>
 		</Paper>
 	);

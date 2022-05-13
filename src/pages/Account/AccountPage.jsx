@@ -2,8 +2,8 @@ import { Container, Grid } from "@mui/material";
 import React from "react";
 import Navbar from "../../components/Navbar";
 import PageTitle from "../../components/PageTitle";
-import ChangePasswordForm from "./ChangePasswordForm";
-import EditProfileForm from "./EditProfileForm";
+import ChangePasswordForm from "./components/ChangePasswordForm";
+import EditProfileForm from "./components/EditProfileForm";
 
 const AccountPage = () => {
 	return (
