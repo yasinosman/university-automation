@@ -60,11 +60,19 @@ const Navbar = () => {
 		<AppBar position="static">
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					<BookOnlineIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+					<BookOnlineIcon
+						onClick={() => navigate("/")}
+						sx={{
+							display: { xs: "none", md: "flex" },
+							mr: 1,
+							"&:hover": {
+								cursor: "pointer",
+							},
+						}}
+					/>
 					<Typography
 						variant="h6"
 						noWrap
-						component="a"
 						href="/"
 						sx={{
 							mr: 2,
@@ -74,7 +82,11 @@ const Navbar = () => {
 							letterSpacing: ".3rem",
 							color: "inherit",
 							textDecoration: "none",
+							"&:hover": {
+								cursor: "pointer",
+							},
 						}}
+						onClick={() => navigate("/")}
 					>
 						uniPortal
 					</Typography>

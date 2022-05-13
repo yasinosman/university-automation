@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import React from "react";
 
 /**
@@ -8,11 +8,9 @@ import React from "react";
  */
 const PageTitle = ({ title }) => {
 	return (
-		<Container maxWidth="xl" sx={{ paddingTop: 5 }}>
-			<Typography variant="h4" component="h1" gutterBottom>
-				{title}
-			</Typography>
-		</Container>
+		<Typography variant="h4" component="h1" gutterBottom sx={{ mt: 5 }}>
+			{title}
+		</Typography>
 	);
 };
 
