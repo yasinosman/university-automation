@@ -20,7 +20,7 @@ const pages = [
 	{ link: "/calendar", name: "Takvim" },
 	{ link: "/courses", name: "Dersler" },
 ];
-const settings = ["Account", "Logout"];
+const settings = [{ link: "/account", name: "Hesap" }];
 
 const Navbar = () => {
 	const navigate = useNavigate();
@@ -45,6 +45,12 @@ const Navbar = () => {
 
 	const handleNavItemClick = (page) => {
 		closeNav();
+
+		navigate(page.link);
+	};
+
+	const handleUserMenuItemClick = (page) => {
+		closeUserMenu();
 
 		navigate(page.link);
 	};
@@ -161,9 +167,9 @@ const Navbar = () => {
 							open={Boolean(anchorElUser)}
 							onClose={closeUserMenu}
 						>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={closeUserMenu}>
-									<Typography textAlign="center">{setting}</Typography>
+							{settings.map((page) => (
+								<MenuItem key={page.link} onClick={() => handleUserMenuItemClick(page)}>
+									<Typography textAlign="center">{page.name}</Typography>
 								</MenuItem>
 							))}
 						</Menu>
