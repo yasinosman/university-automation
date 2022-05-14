@@ -14,15 +14,27 @@
 		"announcements": [
 			{
 				"id": 1,
-				"title": "Duyuru 1",
-				"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-				"date": "14.05.2022"
+				"title": "Aksis Sistemi üzerindeki ders değerlendirme anketi hk.",
+				"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+				"date": "14.05.2022",
+				"announcerFullName": "Özgür Can Turna",
+				"announcerImgURL": "https://avesis.iuc.edu.tr/user/image/4361"
 			},
 			{
 				"id": 2,
-				"title": "Duyuru 2",
+				"title": "Web Programlama - Frontend'de hangi Framework işlensin?",
 				"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-				"date": "15.05.2022"
+				"date": "12.05.2022",
+				"announcerFullName": "Özgür Can Turna",
+				"announcerImgURL": "https://avesis.iuc.edu.tr/user/image/4361"
+			},
+			{
+				"id": 3,
+				"title": "Web Programlama Dersi Ara Sınavı Hk.",
+				"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ",
+				"date": "11.05.2022",
+				"announcerFullName": "Özgür Can Turna",
+				"announcerImgURL": "https://avesis.iuc.edu.tr/user/image/4361"
 			}
 		],
 		"assignments": [

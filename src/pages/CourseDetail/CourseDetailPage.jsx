@@ -7,7 +7,7 @@ import PageTitle from "../../components/PageTitle";
 import courses from "../Courses/mock/courses.json";
 
 const CourseDetailPage = () => {
-	let { id } = useParams();
+	const { id } = useParams();
 
 	const course = React.useMemo(() => courses.find((c) => parseInt(c.id) === parseInt(id)), [id]);
 
