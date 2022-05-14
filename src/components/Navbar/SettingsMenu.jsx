@@ -56,7 +56,10 @@ const SettingsMenu = ({ anchorEl, handleClose, settings, onSettingItemClick }) =
 					<ListItemIcon>
 						<AccountCircle fontSize="small" />
 					</ListItemIcon>
-					<Typography textAlign="center">{page.name}</Typography>
+					<Typography textAlign="center" sx={{ mr: 2 }}>
+						{page.name}
+					</Typography>
+					{page.appendix && page.appendix}
 				</MenuItem>
 			))}
 			<MenuItem onClick={handleLogout}>

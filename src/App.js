@@ -4,6 +4,8 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import HomePage from "./pages/Home";
 import AccountPage from "./pages/Account";
 import LoginPage from "./pages/Login";
+import NewsPage from "./pages/News";
+import EventsPage from "./pages/Events";
 import AuthenticationProvider, { ProtectedRoute } from "./context/Authentication";
 
 function App() {
@@ -12,14 +14,9 @@ function App() {
 			<AuthenticationProvider>
 				<CssBaseline />
 				<Routes>
-					<Route
-						path="/"
-						element={
-							<ProtectedRoute>
-								<HomePage />
-							</ProtectedRoute>
-						}
-					/>
+					<Route path="/" element={<HomePage />} />
+					<Route path="/news" element={<NewsPage />} />
+					<Route path="/events" element={<EventsPage />} />
 					<Route path="/login" element={<LoginPage />} />
 					<Route
 						path="account"

@@ -28,7 +28,7 @@ const News = () => {
 			</Container>
 
 			<Container maxWidth="xl" sx={{ mb: 5, mt: 2 }}>
-				<Link component={RouterLink} to="/account">
+				<Link component={RouterLink} to="/news">
 					Tüm Haberler
 				</Link>
 			</Container>
