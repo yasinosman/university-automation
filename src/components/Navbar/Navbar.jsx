@@ -20,7 +20,8 @@ import { useAuth } from "../../context/Authentication";
 
 const pages = [
 	{ link: "/", name: "Ana Sayfa" },
-	{ link: "/calendar", name: "Takvim" },
+	{ link: "/news", name: "Haberler" },
+	{ link: "/events", name: "Etkinlikler" },
 	{ link: "/courses", name: "Dersler" },
 ];
 const settings = [

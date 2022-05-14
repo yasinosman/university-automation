@@ -1,6 +1,7 @@
-import { LockOutlined } from "@mui/icons-material";
-import { Avatar, Box, Container, CssBaseline, Typography } from "@mui/material";
 import React from "react";
+import { Avatar, Box, Container, CssBaseline, Typography } from "@mui/material";
+import { BookOnline as BookOnlineIcon } from "@mui/icons-material";
+
 import LoginForm from "./components/LoginForm";
 
 const LoginPage = () => {
@@ -15,8 +16,8 @@ const LoginPage = () => {
 					alignItems: "center",
 				}}
 			>
-				<Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-					<LockOutlined />
+				<Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
+					<BookOnlineIcon />
 				</Avatar>
 				<Typography component="h1" variant="h5">
 					Sign in
