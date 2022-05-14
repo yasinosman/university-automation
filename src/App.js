@@ -9,6 +9,8 @@ import EventsPage from "./pages/Events";
 import AuthenticationProvider, { ProtectedRoute } from "./context/Authentication";
 import NewsDetailPage from "./pages/NewsDetail";
 import EventDetailPage from "./pages/EventDetail";
+import CoursesPage from "./pages/Courses";
+import CourseDetailPage, { CourseAnnouncements, CourseAssignments } from "./pages/CourseDetail";
 
 function App() {
 	return (
@@ -22,6 +24,26 @@ function App() {
 
 					<Route path="/events" element={<EventsPage />} />
 					<Route path="/events/:id" element={<EventDetailPage />} />
+
+					<Route
+						path="/courses"
+						element={
+							<ProtectedRoute>
+								<CoursesPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/courses/:id"
+						element={
+							<ProtectedRoute>
+								<CourseDetailPage />
+							</ProtectedRoute>
+						}
+					>
+						<Route path="announcements" element={<CourseAnnouncements />} />
+						<Route path="assignments" element={<CourseAssignments />} />
+					</Route>
 
 					<Route path="/login" element={<LoginPage />} />
 					<Route
