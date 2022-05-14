@@ -8,18 +8,18 @@ import { CardActionArea } from "@mui/material";
 /**
  * Renders a card with a title, image, and description.
  * @param {Object} props
- * @param {String} props.id - The id of the data card
  * @param {String} props.title - Title of the card
  * @param {String} props.subtitle - Subtitle of the card
  * @param {String} props.imgURL - URL of the image to be displayed in the card
  * @param {String} props.imgAlt - Alt text of the image to be displayed in the card
  * @param {String} props.date - Date of the card
+ * @param {Function} props.onClick - Function to be called when the card is clicked
  * @returns
  */
-const DataCard = ({ id, imgURL, imgAlt, title, subtitle, date }) => {
+const DataCard = ({ imgURL, imgAlt, title, subtitle, date, onClick }) => {
 	return (
 		<Card>
-			<CardActionArea>
+			<CardActionArea onClick={onClick}>
 				<CardMedia component="img" height="140" image={imgURL} alt={imgAlt} />
 				<CardContent>
 					<Typography variant="body2" component="div">
