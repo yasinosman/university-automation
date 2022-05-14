@@ -15,13 +15,20 @@ import { BookOnline as BookOnlineIcon } from "@mui/icons-material";
 
 import { useNavigate } from "react-router-dom";
 import SettingsMenu from "./SettingsMenu";
+import { Badge } from "@mui/material";
 
 const pages = [
 	{ link: "/", name: "Ana Sayfa" },
 	{ link: "/calendar", name: "Takvim" },
 	{ link: "/courses", name: "Dersler" },
 ];
-const settings = [{ link: "/account", name: "Hesap" }];
+const settings = [
+	{
+		link: "/account",
+		name: "Hesap",
+		appendix: <Badge color="secondary" badgeContent={4} />,
+	},
+];
 
 const Navbar = () => {
 	const navigate = useNavigate();
@@ -161,7 +168,9 @@ const Navbar = () => {
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Ayarlar">
 							<IconButton onClick={openUserMenu} sx={{ p: 0 }}>
-								<Avatar alt="Yasin Osman" src="https://picsum.photos/50" />
+								<Badge color="secondary" badgeContent={4}>
+									<Avatar alt="Yasin Osman" src="https://picsum.photos/50" />
+								</Badge>
 							</IconButton>
 						</Tooltip>
 						<SettingsMenu
