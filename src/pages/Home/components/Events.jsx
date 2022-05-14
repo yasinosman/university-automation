@@ -29,7 +29,7 @@ const Events = () => {
 				</Grid>
 			</Container>
 			<Container maxWidth="xl" sx={{ mb: 5, mt: 2 }}>
-				<Link component={RouterLink} to="/account">
+				<Link component={RouterLink} to="/events">
 					Tüm Etkinlikler
 				</Link>
 			</Container>
