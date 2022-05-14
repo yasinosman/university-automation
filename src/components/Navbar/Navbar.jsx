@@ -13,9 +13,10 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { BookOnline as BookOnlineIcon } from "@mui/icons-material";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import SettingsMenu from "./SettingsMenu";
 import { Badge } from "@mui/material";
+import { useAuth } from "../../context/Authentication";
 
 const pages = [
 	{ link: "/", name: "Ana Sayfa" },
@@ -31,6 +32,7 @@ const settings = [
 ];
 
 const Navbar = () => {
+	const { user } = useAuth();
 	const navigate = useNavigate();
 
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -165,21 +167,32 @@ const Navbar = () => {
 						))}
 					</Box>
 
-					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Ayarlar">
-							<IconButton onClick={openUserMenu} sx={{ p: 0 }}>
-								<Badge color="secondary" badgeContent={4}>
-									<Avatar alt="Yasin Osman" src="https://picsum.photos/50" />
-								</Badge>
-							</IconButton>
-						</Tooltip>
-						<SettingsMenu
-							anchorEl={anchorElUser}
-							settings={settings}
-							handleClose={closeUserMenu}
-							onSettingItemClick={handleUserMenuItemClick}
-						/>
-					</Box>
+					{user ? (
+						<Box sx={{ flexGrow: 0 }}>
+							<Tooltip title="Ayarlar">
+								<IconButton onClick={openUserMenu} sx={{ p: 0 }}>
+									<Badge color="secondary" badgeContent={4}>
+										<Avatar
+											alt={`${user.firstName} ${user.lastName}`}
+											src={user.imgURL}
+										/>
+									</Badge>
+								</IconButton>
+							</Tooltip>
+							<SettingsMenu
+								anchorEl={anchorElUser}
+								settings={settings}
+								handleClose={closeUserMenu}
+								onSettingItemClick={handleUserMenuItemClick}
+							/>
+						</Box>
+					) : (
+						<Box sx={{ flexGrow: 0 }}>
+							<Button component={RouterLink} to="/login" color="inherit">
+								Giriş Yap
+							</Button>
+						</Box>
+					)}
 				</Toolbar>
 			</Container>
 		</AppBar>
