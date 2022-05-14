@@ -13,7 +13,7 @@ export default function CoursesTable() {
 	const navigate = useNavigate();
 
 	const handleCourseClick = (course) => {
-		navigate(`/courses/${course.id}`);
+		navigate(`/courses/${course.id}/announcements`);
 	};
 
 	return (
