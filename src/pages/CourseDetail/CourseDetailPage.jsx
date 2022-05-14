@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Grid } from "@mui/material";
-import { useParams, Outlet } from "react-router-dom";
+import { Container, Grid, Link } from "@mui/material";
+import { useParams, Outlet, NavLink as RouterLink } from "react-router-dom";
 
 import Navbar from "../../components/Navbar";
 import PageTitle from "../../components/PageTitle";
@@ -20,9 +20,24 @@ const CourseDetailPage = () => {
 			</Container>
 
 			<Container maxWidth="xl">
-				<Grid container spacing={5}>
-					<Grid item xs={4}></Grid>
-					<Grid item xs={8}>
+				<Grid container spacing={0}>
+					<Grid
+						item
+						xs={3}
+						sx={{
+							display: "flex",
+							flexDirection: "column",
+							"> .active": { fontWeight: "bold" },
+						}}
+					>
+						<Link component={RouterLink} to="announcements" sx={{ mb: 1 }}>
+							Duyurular
+						</Link>
+						<Link component={RouterLink} to="assignments" sx={{ mb: 1 }}>
+							Ödevler
+						</Link>
+					</Grid>
+					<Grid item xs={9}>
 						<Outlet />
 					</Grid>
 				</Grid>
