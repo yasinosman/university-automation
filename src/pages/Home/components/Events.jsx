@@ -1,12 +1,18 @@
 import React from "react";
 import { Container, Grid, Link } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 import PageTitle from "../../../components/PageTitle";
 import DataCard from "./DataCard";
 import events from "../mock/events.json";
 
 const Events = () => {
+	const navigate = useNavigate();
+
+	const navigateToEventDetails = (event) => {
+		navigate(`/events/${event.id}`);
+	};
+
 	return (
 		<>
 			<Container maxWidth="xl">
@@ -17,7 +23,7 @@ const Events = () => {
 						<Grid key={event.id} item xs={12} sm={6} md={4} lg={3}>
 							<DataCard
 								key={event.id}
-								id={event.id}
+								onClick={() => navigateToEventDetails(event)}
 								title={event.title}
 								subtitle={event.subtitle}
 								imgURL={event.imgURL}
