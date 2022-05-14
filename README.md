@@ -12,13 +12,19 @@ https://cute-clafoutis-bfd10c.netlify.app/
 git clone https://github.com/yasinosman/university-automation.git
 ```
 
-2. Install dependencies
+2. Change directory to the cloned repository
+
+```
+cd university-automation
+```
+
+3. Install dependencies
 
 ```
 npm install
 ```
 
-3. Run the development server
+4. Run the development server
 
 ```
 npm start
