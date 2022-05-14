@@ -10,6 +10,7 @@ import AuthenticationProvider, { ProtectedRoute } from "./context/Authentication
 import NewsDetailPage from "./pages/NewsDetail";
 import EventDetailPage from "./pages/EventDetail";
 import CoursesPage from "./pages/Courses";
+import CourseDetailPage from "./pages/CourseDetail";
 
 function App() {
 	return (
@@ -29,6 +30,14 @@ function App() {
 						element={
 							<ProtectedRoute>
 								<CoursesPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/courses/:id"
+						element={
+							<ProtectedRoute>
+								<CourseDetailPage />
 							</ProtectedRoute>
 						}
 					/>

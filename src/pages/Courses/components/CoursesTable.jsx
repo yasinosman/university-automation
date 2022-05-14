@@ -7,8 +7,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import courses from "../mock/courses.json";
+import { useNavigate } from "react-router-dom";
 
 export default function CoursesTable() {
+	const navigate = useNavigate();
+
+	const handleCourseClick = (course) => {
+		navigate(`/courses/${course.id}`);
+	};
+
 	return (
 		<TableContainer component={Paper}>
 			<Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -28,6 +35,7 @@ export default function CoursesTable() {
 								"&:last-child td, &:last-child th": { border: 0 },
 								"&:hover": { cursor: "pointer" },
 							}}
+							onClick={() => handleCourseClick(course)}
 						>
 							<TableCell component="th" scope="row">
 								{course.id}
