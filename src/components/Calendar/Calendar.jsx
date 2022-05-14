@@ -14,10 +14,10 @@ const Calendar = () =>{
         sx={{
          bgcolor:"#fafafa",
          marginTop:"20px",
-         marginLeft:"30px",
+         marginLeft:"103px",
          maxWidth:"500px",
-         width:"500px",
-         paddingRight:"157px",
+         width:"470px",
+         paddingRight:"143px",
            }}
         orientation="landscape"
         openTo="day"
