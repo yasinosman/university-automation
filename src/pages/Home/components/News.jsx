@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, Link, Typography } from "@mui/material";
+import { Container, Grid, Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import PageTitle from "../../../components/PageTitle";
 import DataCard from "./DataCard";
