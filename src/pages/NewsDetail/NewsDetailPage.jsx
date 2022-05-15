@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar";
@@ -16,6 +16,16 @@ const NewsDetailPage = () => {
 
 			<Container maxWidth="xl">
 				<PageTitle title={newsItem.title} />
+				<Typography>
+					{newsItem.subtitle}
+				</Typography>
+			
+			</Container>
+			<Container maxWidth="xl">
+				{newsItem.imgURL}
+				<Typography>
+					{newsItem.date}
+				</Typography>
 			</Container>
 		</>
 	);

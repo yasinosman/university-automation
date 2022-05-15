@@ -38,6 +38,7 @@ const Events = () => {
 				<Link component={RouterLink} to="/events">
 					Tüm Etkinlikler
 				</Link>
+			
 			</Container>
 		</>
 	);
