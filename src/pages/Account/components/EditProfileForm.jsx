@@ -2,12 +2,9 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
-
-const USER_DATA = {
-	firstName: "Yasin",
-	lastName: "Osman",
-	email: "yasinosman10@gmail.com",
-};
+import AlertPopup from "../../../components/AlertPopup";
+import Loading from "../../../components/Loading";
+import { useAuth } from "../../../context/Authentication";
 
 const ProfileSchema = Yup.object().shape({
 	firstName: Yup.string()
@@ -22,24 +19,55 @@ const ProfileSchema = Yup.object().shape({
 });
 
 const EditProfileForm = () => {
+	const { user, setUser } = useAuth();
+
+	const [loading, setLoading] = React.useState(false);
+	const [error, setError] = React.useState(null);
+
 	const formik = useFormik({
-		initialValues: USER_DATA,
+		initialValues: user,
 		validationSchema: ProfileSchema,
-		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+		onSubmit: async (values) => {
+			try {
+				const res = await fetch(`${process.env.REACT_APP_API_URL}/users/me`, {
+					method: "patch",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ firstName: values.firstName, lastName: values.lastName }),
+				});
+
+				if (!res.ok) {
+					setError("Profil güncellenirken bir hata oluştu, lütfen daha sonra tekrar deneyin.");
+					setLoading(false);
+					return;
+				}
+
+				const data = await res.json();
+
+				console.log({ data });
+
+				window.localStorage.setItem("user", JSON.stringify(data));
+				setUser(data);
+			} catch (error) {
+				setError("Profil güncellenirken bir hata oluştu, lütfen daha sonra tekrar deneyin.");
+			} finally {
+				setLoading(false);
+			}
 		},
 	});
 
 	const areAllFieldsUnchanged = React.useMemo(() => {
 		return (
-			USER_DATA.firstName === formik.values.firstName &&
-			USER_DATA.lastName === formik.values.lastName &&
-			USER_DATA.email === formik.values.email
+			user.firstName === formik.values.firstName &&
+			user.lastName === formik.values.lastName &&
+			user.email === formik.values.email
 		);
-	}, [formik.values]);
+	}, [formik.values, user]);
 
 	return (
 		<form onSubmit={formik.handleSubmit}>
+			{error && <AlertPopup error={error} handleClose={() => setError(null)} />}
+			<Loading loading={loading} />
+
 			<Box
 				sx={{
 					display: "flex",
@@ -84,6 +112,7 @@ const EditProfileForm = () => {
 					onBlur={formik.handleBlur}
 					error={formik.touched.email && Boolean(formik.errors.email)}
 					helperText={formik.touched.email && formik.errors.email}
+					disabled
 				/>
 				<Button color="primary" variant="contained" type="submit" disabled={areAllFieldsUnchanged}>
 					Bilgileri Güncelle

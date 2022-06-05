@@ -3,7 +3,7 @@ import Loading from "../../components/Loading";
 import AuthenticationContext from "./AuthenticationContext";
 
 const AuthenticationProvider = ({ children }) => {
-	const [user, setUser] = React.useState(() => window.localStorage.getItem("user"));
+	const [user, setUser] = React.useState(() => JSON.parse(window.localStorage.getItem("user")));
 
 	const [loading, setLoading] = React.useState(false);
 
@@ -32,11 +32,11 @@ const AuthenticationProvider = ({ children }) => {
 				});
 				if (userResponse.ok) {
 					const userData = await userResponse.json();
-					window.localStorage.setItem("user", JSON.stringify(userData));
+					window.localStorage.setItem("user", JSON.stringify(userData.user));
 
-					setUser(userData);
+					setUser(userData.user);
 
-					return resolve(userData);
+					return resolve(userData.user);
 				}
 
 				return resolve(null);
@@ -64,7 +64,7 @@ const AuthenticationProvider = ({ children }) => {
 			}, 1000);
 		});
 
-	const value = { user, login, logout, loading };
+	const value = { user, login, logout, loading, setUser };
 
 	return (
 		<AuthenticationContext.Provider value={value}>
