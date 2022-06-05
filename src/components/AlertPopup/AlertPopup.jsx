@@ -7,7 +7,7 @@ import React from "react";
  * @param {String} props.error - The error message to display
  * @param {() => void} props.handleClose - The function to call when the error message is dismissed
  */
-const AlertPopup = ({ error, handleClose }) => {
+const AlertPopup = ({ error, handleClose = () => {} }) => {
 	return (
 		<Snackbar
 			anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
