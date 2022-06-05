@@ -4,44 +4,53 @@ import { useParams, Outlet, NavLink as RouterLink } from "react-router-dom";
 
 import Navbar from "../../components/Navbar";
 import PageTitle from "../../components/PageTitle";
-import courses from "../Courses/mock/courses.json";
+import { useFetch } from "../../hooks";
+import AlertPopup from "../../components/AlertPopup";
+import Loading from "../../components/Loading";
 
 const CourseDetailPage = () => {
 	const { id } = useParams();
 
-	const course = React.useMemo(() => courses.find((c) => parseInt(c.id) === parseInt(id)), [id]);
+	const { loading, error, value: course, setError } = useFetch(`/courses/${id}`, {}, [id]);
 
 	return (
 		<>
 			<Navbar />
 
-			<Container maxWidth="xl">
-				<PageTitle title={course.title} />
-			</Container>
+			{error && <AlertPopup error={error.message} handleClose={() => setError(false)} />}
+			<Loading loading={loading} />
 
-			<Container maxWidth="xl">
-				<Grid container spacing={0}>
-					<Grid
-						item
-						xs={3}
-						sx={{
-							display: "flex",
-							flexDirection: "column",
-							"> .active": { fontWeight: "bold" },
-						}}
-					>
-						<Link component={RouterLink} to="announcements" sx={{ mb: 1 }}>
-							Duyurular
-						</Link>
-						<Link component={RouterLink} to="assignments" sx={{ mb: 1 }}>
-							Ödevler
-						</Link>
-					</Grid>
-					<Grid item xs={9}>
-						<Outlet />
-					</Grid>
-				</Grid>
-			</Container>
+			{course && (
+				<>
+					<Container maxWidth="xl">
+						<PageTitle title={course.title} />
+					</Container>
+
+					<Container maxWidth="xl">
+						<Grid container spacing={0}>
+							<Grid
+								item
+								xs={3}
+								sx={{
+									display: "flex",
+									flexDirection: "column",
+									"> .active": { fontWeight: "bold" },
+								}}
+							>
+								<Link component={RouterLink} to="announcements" sx={{ mb: 1 }}>
+									Duyurular
+								</Link>
+								<Link component={RouterLink} to="assignments" sx={{ mb: 1 }}>
+									Ödevler
+								</Link>
+							</Grid>
+							<Grid item xs={9}>
+								<Outlet />
+							</Grid>
+						</Grid>
+					</Container>
+				</>
+			)}
 		</>
 	);
 };
