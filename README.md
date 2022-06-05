@@ -24,7 +24,13 @@ cd university-automation
 npm install
 ```
 
-4. Run the development server
+4. Create a `.env` file based on `.env.example` file
+
+```
+REACT_APP_API_URL='http://localhost:3000'
+```
+
+5. Run the development server
 
 ```
 npm start
